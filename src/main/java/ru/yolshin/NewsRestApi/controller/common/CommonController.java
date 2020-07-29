@@ -8,12 +8,12 @@ import java.util.List;
 
 public interface CommonController<E extends AbstractEntity> {
 
-  //@PostMapping
-  //ResponseEntity<E> save(@RequestBody E entity);
+  @PostMapping
+  ResponseEntity<E> save(@RequestBody E entity);
 
   //@GetMapping
-  //ResponseEntity<E> get(@RequestParam Longid);
+  //ResponseEntity<E> get(@RequestParam Long id);
 
-  @GetMapping("/all")
+  @GetMapping
   ResponseEntity<List<E>> getAll();
 }

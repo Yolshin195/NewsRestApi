@@ -1,8 +1,12 @@
 package ru.yolshin.NewsRestApi.controller.common;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpStatus;
 import ru.yolshin.NewsRestApi.service.common.CommonService;
 import ru.yolshin.NewsRestApi.entity.AbstractEntity;
+import ru.yolshin.NewsRestApi.exception.SampleException;
+import ru.yolshin.NewsRestApi.base.ErrorType;
 
 import java.util.List;
 
@@ -17,5 +21,13 @@ public abstract class AbstractController<E extends AbstractEntity, S extends Com
   @Override
   public ResponseEntity<List<E>> getAll() {
     return ResponseEntity.ok(service.getAll());
+  }
+
+  @Override
+  public ResponseEntity<E> save(@RequestBody E entity) {
+    return service.save(entity).map(ResponseEntity::ok)
+      .orElseThrow(() -> new SampleException(
+        String.format(ErrorType.ENTITY_NOT_SAVED.getDescription(), entity.toString())
+      ));
   }
 }
