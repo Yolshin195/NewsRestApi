@@ -9,6 +9,12 @@ public interface CommonService<E extends AbstractEntity> {
 
   Optional<E> save(E entity);
 
+  Optional<E> get(Long id);
+
   List<E> getAll();
+
+  Optional<E> update(E entity);
+  
+  Boolean deleteById(Long id);
 
 }

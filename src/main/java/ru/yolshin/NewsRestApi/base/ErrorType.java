@@ -1,11 +1,5 @@
 package ru.yolshin.NewsRestApi.base;
 
-/**
- * Author: Vyacheslav Chernyshov
- * Date: 21.09.18
- * Time: 9:43
- * e-mail: 2262288@gmail.com
- */
 public enum ErrorType {
     ENTITY_NOT_FOUND("Entity not found by id: %s"),
     ENTITY_NOT_SAVED("Entity not saved: %s"),

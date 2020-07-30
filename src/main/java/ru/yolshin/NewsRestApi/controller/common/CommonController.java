@@ -11,9 +11,15 @@ public interface CommonController<E extends AbstractEntity> {
   @PostMapping
   ResponseEntity<E> save(@RequestBody E entity);
 
-  //@GetMapping
-  //ResponseEntity<E> get(@RequestParam Long id);
+  @GetMapping("/{ID}")
+  ResponseEntity<E> get(@PathVariable("ID") Long id);
 
   @GetMapping
   ResponseEntity<List<E>> getAll();
+
+  @PutMapping
+  ResponseEntity<E> update(@RequestBody E entity);
+
+  @DeleteMapping("/{ID}")
+  Boolean delete(@PathVariable("ID") Long id);
 }
